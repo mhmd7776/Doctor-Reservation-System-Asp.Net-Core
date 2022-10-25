@@ -1,0 +1,64 @@
+﻿@using ReservationSystem.Application.Extensions
+@model List<ReservationSystem.Domain.Entities.DoctorTiming>
+
+<div class="mt-4" id="DoctorTimingListBox">
+
+    <div class="d-flex justify-content-between align-items-center">
+        <button type="button" onclick="OpenCreateDoctorTimingModal('@ViewBag.DoctorId')" class="btn btn-sm btn-outline-success">افزودن</button>
+        <strong>لیست زمان بندی</strong>
+    </div>
+
+    <hr class="mtb10" />
+
+    @if (Model.Any())
+    {
+        <div class="table-responsive direction-rtl">
+            <table class="table table-bordered table-hover text-center">
+                <thead class="table-secondary">
+                <tr>
+                    <th scope="col">زمان بندی</th>
+                    <th scope="col">مدت هر نوبت</th>
+                    <th scope="col">امکانات</th>
+                </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                @foreach (var timing in Model)
+                {
+                    <tr class="vertical-align-middle">
+                        <th>
+                            @timing.Day.ShowEnumDisplayName() از ساعت @timing.StartTime.ToString() الی @timing.EndTime.ToString()
+                        </th>
+                        <th>
+                            @timing.Duration.ToString()
+                        </th>
+                        <td>
+                            <a onclick="DeleteDoctorTiming('@timing.Id')" class="btn btn-danger btn-sm">حذف</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-primary text-center" role="alert">
+            هیچ زمان بندی یافت نشد
+        </div>
+    }
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="CreateDoctorTimingModal" tabindex="-1" aria-labelledby="CreateDoctorTimingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header direction-rtl">
+                <h5 class="modal-title" id="CreateDoctorTimingModalLabel">افزودن زمان بندی</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body direction-rtl" id="CreateDoctorTimingModalBody">
+                
+            </div>
+        </div>
+    </div>
+</div>

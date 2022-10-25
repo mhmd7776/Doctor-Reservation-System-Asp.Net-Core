@@ -1,0 +1,65 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using ReservationSystem.Application.Statics
+@model ReservationSystem.Domain.ViewModels.EditDoctorViewModel
+
+@{
+    ViewData["Title"] = "ویرایش دکتر";
+    var avatarPath = string.IsNullOrEmpty(Model.ImageName) ? PathTools.DefaultUserAvatarPath : PathTools.DoctorAvatarPath + Model.ImageName;
+}
+
+<div class="col-lg-12 mt-3 mx-auto">
+    <div class="card">
+        <div class="card-body">
+            <form method="post" asp-action="EditDoctor" asp-controller="Doctor" enctype="multipart/form-data">
+                <h4 class="text-center">
+                    <span>ویرایش دکتر @Model.DoctorDisplayName</span>
+                    <i class="fa fa-edit"></i>
+                </h4>
+                <hr />
+
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-12 mb-3 text-center">
+
+                        <img src="@avatarPath" id="DoctorAvatarPreview" class="doctor-avatar-preview" alt="تصویر دکتر"/>
+                        <input type="file" class="d-none" name="doctorAvatar" id="DoctorAvatarInput" accept=".png, .jpg, .jpeg"/>
+                        <button type="button" id="ChooseAvatarImageBtn" class="btn btn-primary w-100 d-flex justify-content-center align-items-center mt-3">
+                            <i class="fa fa-upload mr-5"></i>
+                            <span>انتخاب تصویر</span>
+                        </button>
+
+                    </div>
+
+                    <div class="col-lg-8 col-md-12">
+                        <input type="hidden" asp-for="Id"/>
+                        <input type="hidden" asp-for="ImageName"/>
+
+                        <div class="mb-3 direction-rtl">
+                            <label asp-for="Specialty" class="form-label"></label>
+                            <input type="text" class="form-control" asp-for="Specialty">
+                            <span class="error-style" asp-validation-for="Specialty"></span>
+                        </div>
+
+                        <div class="mb-3 direction-rtl">
+                            <label asp-for="Address" class="form-label"></label>
+                            <input type="text" class="form-control" asp-for="Address">
+                            <span class="error-style" asp-validation-for="Address"></span>
+                        </div>
+
+                        <div class="mb-3 direction-rtl">
+                            <label asp-for="Biography" class="form-label"></label>
+                            <textarea class="form-control" asp-for="Biography" rows="5"></textarea>
+                            <span class="error-style" asp-validation-for="Biography"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-warning w-100">ویرایش</button>
+                    </div>
+
+                </div>
+            </form>
+            
+            @await Component.InvokeAsync("DoctorTimingsList", new { doctorId = Model.Id })
+
+        </div>
+    </div>
+</div>

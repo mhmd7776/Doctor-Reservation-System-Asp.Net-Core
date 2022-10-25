@@ -1,0 +1,36 @@
+﻿@using ReservationSystem.Domain.Entities
+@model ReservationSystem.Domain.ViewModels.CreateDoctorTimingViewModel
+
+<form method="post" id="CreateDoctorTimingForm" asp-action="CreateDoctorTiming" asp-controller="Doctor" data-ajax="true"
+      data-ajax-begin="StartLoading('#CreateDoctorTimingModalBody')" data-ajax-success="CreateDoctorTimingDone">
+
+    <input type="hidden" asp-for="DoctorId" />
+
+    <div class="mb-3 direction-rtl">
+        <label asp-for="Day" class="form-label"></label>
+        <select class="form-select" asp-for="Day" asp-items="Html.GetEnumSelectList(typeof(Days))">
+            <option value="">لطفا روز مورد نظر را انتخاب کنید</option>
+        </select>
+        <span class="error-style" asp-validation-for="Day"></span>
+    </div>
+
+    <div class="mb-3 direction-rtl">
+        <label asp-for="StartTime" class="form-label"></label>
+        <input type="text" class="form-control" asp-for="StartTime">
+        <span class="error-style" asp-validation-for="StartTime"></span>
+    </div>
+
+    <div class="mb-3 direction-rtl">
+        <label asp-for="EndTime" class="form-label"></label>
+        <input type="text" class="form-control" asp-for="EndTime">
+        <span class="error-style" asp-validation-for="EndTime"></span>
+    </div>
+
+    <div class="mb-3 direction-rtl">
+        <label asp-for="Duration" class="form-label"></label>
+        <input type="text" class="form-control" asp-for="Duration">
+        <span class="error-style" asp-validation-for="Duration"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">افزودن</button>
+</form>

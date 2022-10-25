@@ -1,0 +1,68 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using ReservationSystem.Application.Extensions
+@model ReservationSystem.Domain.ViewModels.FilterDoctorsViewModel
+
+@{
+    ViewData["Title"] = "لیست دکتران";
+}
+
+<div class="col-12 table-responsive mt-3 direction-rtl" id="DoctorsListBox">
+    
+    <div class="d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">
+            <span>لیست دکتران</span>
+            <a asp-action="CreateDoctor" asp-controller="Doctor" class="btn btn-sm btn-success">افزودن</a>
+        </h4>
+        <form method="get" id="FilterForm" asp-action="FilterDoctors" asp-controller="Doctor">
+            <input type="hidden" asp-for="CurrentPage"/>
+            <div class="position-relative">
+                <input type="text" autocomplete="off" class="form-control" asp-for="FullName" placeholder="جستجو بر اساس نام"/>
+                <button class="search-btn" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    <hr/>
+
+    @if (Model.Entities.Any())
+    {
+        <table class="table table-bordered table-hover text-center">
+            <thead class="table-secondary">
+            <tr>
+                <th scope="col">شناسه</th>
+                <th scope="col">تصویر</th>
+                <th scope="col">نام کامل</th>
+                <th scope="col">تخصص</th>
+                <th scope="col">امکانات</th>
+            </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            @foreach (var doctor in Model.Entities)
+            {
+                <tr class="vertical-align-middle">
+                    <th>@doctor.Id</th>
+                    <th>
+                        <img src="@doctor.GetDoctorAvatarPath()" class="doctor-avatar" alt="تصویر"/>
+                    </th>
+                    <td>@doctor.User.FullName</td>
+                    <td>@doctor.Specialty</td>
+                    <td>
+                        <a asp-action="EditDoctor" asp-controller="Doctor" asp-route-id="@doctor.Id" class="btn btn-warning btn-sm">ویرایش</a>
+                        <a onclick="DeleteDoctor('@doctor.Id')" class="btn btn-danger btn-sm">حذف</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+        <partial name="_PaginationPartial" model="@Model.GetPaging()"/>
+    }
+    else
+    {
+        <div class="alert alert-primary text-center" role="alert">
+            هیچ دکتری یافت نشد
+        </div>
+    }
+
+</div>

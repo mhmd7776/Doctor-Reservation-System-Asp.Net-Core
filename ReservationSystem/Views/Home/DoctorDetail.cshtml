@@ -1,0 +1,92 @@
+﻿@using ReservationSystem.Application.Statics
+@using ReservationSystem.Application.Extensions
+@model ReservationSystem.Domain.ViewModels.DoctorDetailViewModel
+
+@{
+    ViewData["Title"] = $"اطلاعات دکتر {Model.FullName}";
+    var avatarPath = string.IsNullOrEmpty(Model.ImageName) ? PathTools.DefaultUserAvatarPath : PathTools.DoctorAvatarPath + Model.ImageName;
+    var dates = ViewData["Dates"] as List<DateTime>;
+}
+
+<div class="col-12 mt-3">
+    <div class="card mb-3 w-100 direction-rtl">
+        <div class="row g-0 doctor-info-box">
+
+            <div class="col-md-3 text-center">
+                <img src="@avatarPath" class="detail-doctor-avatar" alt="@Model.FullName">
+            </div>
+
+            <div class="col-md-9">
+                <div class="card-body">
+                    <h4>دکتر @Model.FullName</h4>
+                    <small class="color-gray">@Model.Specialty</small>
+
+                    <div class="mt-4">
+                        <strong>درباره ی دکتر</strong>
+                        <p class="text-biography">@Model.Biography</p>
+                    </div>
+
+                    <div class="mt-4">
+                        <strong>آدرس</strong>
+                        <p class="text-biography">@Model.Address</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 direction-rtl">
+                <h4>
+                    <i class="fa fa-list"></i>
+                    <span>اطلاعات نوبت</span>
+                </h4>
+                <hr />
+
+                @if (dates != null && dates.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover text-center">
+                            <thead class="table-secondary">
+                            <tr>
+                                <th scope="col">اطلاعات</th>
+                                <th scope="col">امکانات</th>
+                            </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                            @foreach (var date in dates)
+                            {
+                                <tr class="vertical-align-middle">
+                                    <th>@date.ToStringShamsiDate()</th>
+                                    <td>
+                                        <a onclick="OpenFinalizeReservationModal('@Model.Id', '@date.ToShortDateString()')" class="btn btn-success btn-sm">ثبت نوبت</a>
+                                    </td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-primary text-center" role="alert">
+                        هیچ زمان بندی برای دکتر @Model.FullName یافت نشد
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="FinalizeReservationModal" tabindex="-1" aria-labelledby="FinalizeReservationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header direction-rtl">
+                <h5 class="modal-title" id="FinalizeReservationModalLabel">ثبت نهایی نوبت</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body direction-rtl" id="FinalizeReservationModalBody">
+                
+            </div>
+        </div>
+    </div>
+</div>

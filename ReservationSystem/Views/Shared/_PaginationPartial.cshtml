@@ -1,0 +1,35 @@
+﻿@model ReservationSystem.Domain.ViewModels.PagingViewModel
+
+<nav>
+    <ul class="pagination d-flex justify-content-center">
+
+        <li class="page-item @(Model.CurrentPage > 1 ? "" : "disabled")">
+            <a class="page-link cursor-pointer" onclick="SubmitFilterFormPagination('@(Model.CurrentPage - 1)')">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        
+        @for (var i = Model.StartPage; i <= Model.EndPage; i++)
+        {
+            if (i == Model.CurrentPage)
+            {
+                <li class="page-item current">
+                    <a class="page-link cursor-pointer" href="javascript:void(0)">@i</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link cursor-pointer" onclick="SubmitFilterFormPagination('@i')">@i</a>
+                </li>
+            }
+        }
+
+        <li class="page-item @(Model.CurrentPage < Model.EndPage ? "" : "disabled")">
+            <a class="page-link cursor-pointer" onclick="SubmitFilterFormPagination('@(Model.CurrentPage + 1)')">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+
+    </ul>
+</nav>

@@ -1,0 +1,70 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using ReservationSystem.Application.Statics
+@using ReservationSystem.Domain.ViewModels
+@model ReservationSystem.Domain.ViewModels.CreateDoctorViewModel
+
+@{
+    ViewData["Title"] = "افزودن دکتر";
+    var users = ViewData["NotDoctorUsers"] as List<SelectListViewModel>;
+}
+
+<div class="col-lg-12 mt-3 mx-auto">
+    <div class="card">
+        <div class="card-body">
+            <form method="post" asp-action="CreateDoctor" asp-controller="Doctor" enctype="multipart/form-data">
+                <h4 class="text-center">
+                    <span>افزودن دکتر</span>
+                    <i class="fa fa-user-plus"></i>
+                </h4>
+                <hr />
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 mb-3 text-center">
+                        <img src="@PathTools.DefaultUserAvatarPath" id="DoctorAvatarPreview" class="doctor-avatar-preview" alt="تصویر دکتر" />
+                        <input type="file" class="d-none" name="doctorAvatar" id="DoctorAvatarInput" accept=".png, .jpg, .jpeg"/>
+                        <button type="button" id="ChooseAvatarImageBtn" class="btn btn-primary w-100 d-flex justify-content-center align-items-center mt-3">
+                            <i class="fa fa-upload mr-5"></i>
+                            <span>انتخاب تصویر</span>
+                        </button>
+                    </div>
+                    <div class="col-lg-8 col-md-12">
+                        <div class="mb-3 direction-rtl">
+                            <label asp-for="UserId" class="form-label"></label>
+                            <select class="form-select" asp-for="UserId">
+                                <option value="">لطفا کاربر مورد نظر را انتخاب کنید</option>
+                                @if (users != null && users.Any())
+                                {
+                                    foreach (var user in users)
+                                    {
+                                        <option value="@user.Id">@user.Title</option>
+                                    }
+                                }
+                            </select>
+                            <span class="error-style" asp-validation-for="UserId"></span>
+                        </div>
+
+                        <div class="mb-3 direction-rtl">
+                            <label asp-for="Specialty" class="form-label"></label>
+                            <input type="text" class="form-control" asp-for="Specialty">
+                            <span class="error-style" asp-validation-for="Specialty"></span>
+                        </div>
+
+                        <div class="mb-3 direction-rtl">
+                            <label asp-for="Address" class="form-label"></label>
+                            <input type="text" class="form-control" asp-for="Address">
+                            <span class="error-style" asp-validation-for="Address"></span>
+                        </div>
+
+                        <div class="mb-3 direction-rtl">
+                            <label asp-for="Biography" class="form-label"></label>
+                            <textarea class="form-control" asp-for="Biography" rows="5"></textarea>
+                            <span class="error-style" asp-validation-for="Biography"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">افزودن</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

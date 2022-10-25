@@ -1,0 +1,65 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ReservationSystem.Domain.ViewModels.FinalReservationViewModel
+
+@{
+    var timeRanges = ViewData["TimeRanges"] as List<string>;
+    var index = 1;
+}
+
+@if (timeRanges != null && timeRanges.Any())
+{
+    <div class="row" id="FinalReservationMainBox">
+        
+        <div>
+            <strong>@Model.UserDisplayName عزیز</strong>
+            <p class="mt-2">لطفا برای ثبت نهایی نوبت ابتدا زمان مورد نظر خود را انتخاب کرده سپس با بررسی صحت اطلاعات بر روی دکمه ی ثبت نهایی کلیک نمایید.</p>
+        </div>
+
+        <form method="post" asp-action="FinalizeReservation" asp-controller="Home" id="FinalReservationForm" data-ajax="true"
+              data-ajax-begin="StartLoading('#FinalizeReservationModalBody')" data-ajax-success="FinalReservationDone">
+
+            <input type="hidden" asp-for="Date"/>
+            <input type="hidden" asp-for="DoctorId"/>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="text-center">
+                            <span>انتخاب زمان نوبت</span>
+                            <i class="fa fa-clock-o"></i>
+                        </h4>
+                        <hr/>
+                        <div class="time-ranges-box">
+                            @foreach (var time in timeRanges)
+                            {
+                                <div class="form-check mb-3 ml-15">
+                                    <input class="form-check-input ml-5" type="radio" name="Time" id="Time-@index" value="@time">
+                                    <label class="form-check-label" for="Time-@index">
+                                        @time
+                                    </label>
+                                </div>
+                                index++;
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 mt-3">
+                <div class="mb-3 direction-rtl">
+                    <label asp-for="PhoneNumber" class="form-label"></label>
+                    <input type="text" class="form-control" asp-for="PhoneNumber">
+                    <span class="error-style" asp-validation-for="PhoneNumber"></span>
+                </div>
+
+                <div class="mb-3 direction-rtl">
+                    <label asp-for="NationalCode" class="form-label"></label>
+                    <input type="text" class="form-control" asp-for="NationalCode">
+                    <span class="error-style" asp-validation-for="NationalCode"></span>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">ثبت نهایی</button>
+            </div>
+        </form>
+    </div>
+}

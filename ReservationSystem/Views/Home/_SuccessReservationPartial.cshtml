@@ -1,0 +1,23 @@
+﻿@model ReservationSystem.Domain.ViewModels.ReservationResultViewModel
+
+<div class="row pl-0">
+    <div class="col-12 pl-0">
+        <div class="alert alert-success w-100" role="alert">
+            نوبت شما با موفقیت ثبت شد
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="text-center">
+                    <span>اطلاعات نوبت</span>
+                    <i class="fa fa-list-alt"></i>
+                </h4>
+                <hr/>
+                <div>
+                    <div class="mb-3"><strong>نام دکتر : </strong>@Model.DoctorDisplayName</div>
+                    <div class="mb-3"><strong>زمان مراجعه : </strong>@Model.Date ساعت @Model.Time</div>
+                    <div><strong>کد پیگیری : </strong>@Model.TrackingCode</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

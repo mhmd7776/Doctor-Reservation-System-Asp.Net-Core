@@ -1,0 +1,68 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"]</title>
+    <link href="/libraries/bootstrap-5.2.1-dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="/libraries/bootstrap-5.2.1-dist/css/bootstrap-utilities.rtl.min.css.map" rel="stylesheet">
+    <link rel="stylesheet" href="/libraries/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="/libraries/waitme/waitMe.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    @await RenderSectionAsync("Styles", false)
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="/images/logo/logo.png" alt="Logo" class="d-inline-block align-text-top site-logo">
+                سیستم نوبت دهی
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    @if (!User.Identity!.IsAuthenticated)
+                    {
+                        <li class="nav-item active">
+                            <a class="nav-link" asp-action="Register" asp-controller="Account">ثبت نام</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" asp-action="Login" asp-controller="Account">ورود</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item active">
+                            <a class="nav-link" asp-action="Logout" asp-controller="Account">خروج</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" asp-action="FilterDoctors" asp-controller="Doctor">مدیریت دکتران</a>
+                        </li>
+                    }
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">صفحه اصلی</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            @RenderBody()
+        </div>
+    </div>
+
+    <script src="/libraries/jquery/jquery-3.6.1.min.js"></script>
+    <partial name="_JqueryValidationPartial" />
+    <script src="/libraries/bootstrap-5.2.1-dist/js/bootstrap.min.js"></script>
+    <script src="/libraries/sweetalert-2/sweetalert-2.js"></script>
+    <script src="/libraries/waitme/waitMe.min.js"></script>
+    <script src="/js/main.js"></script>
+    <partial name="_NotificationsPartial" />
+    @await RenderSectionAsync("Scripts", false)
+</body>
+</html>

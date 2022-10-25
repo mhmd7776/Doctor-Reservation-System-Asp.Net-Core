@@ -1,0 +1,144 @@
+﻿
+@font-face {
+    font-family: "Vazir";
+    src: url("/font/vazir/Vazir-Medium-FD-WOL.eot") format("eot"), 
+         url("/font/vazir/Vazir-Medium-FD-WOL.ttf") format("ttf"), 
+         url("/font/vazir/Vazir-Medium-FD-WOL.woff2") format("woff2"), 
+         url("/font/vazir/Vazir-Medium-FD-WOL.woff") format("woff");
+}
+
+body {
+    font-family: "Vazir", sans-serif;
+}
+
+.site-logo {
+    width: 30px;
+    margin-right: 5px;
+}
+
+.error-style {
+    color: tomato;
+    font-size: 13px;
+}
+
+.direction-rtl {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+.vertical-align-middle {
+    vertical-align: middle !important;
+}
+
+.doctor-avatar {
+    width: 50px;
+    border-radius: 5px;
+}
+
+.pagination li a {
+    color: black !important;
+}
+
+.pagination li.current a {
+    color: #fff !important;
+    background-color: gray !important;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+.search-btn {
+    position: absolute;
+    left: 5px;
+    top: 4px;
+    font-size: 20px;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border: 2px solid black !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.doctor-avatar-preview {
+    width: 100%;
+    border-radius: 5px;
+    max-width: 200px;
+}
+
+.mr-5 {
+    margin-right: 5px;
+}
+
+.pl-0 {
+    padding-left: 0 !important;
+}
+
+.mtb10 {
+    margin: 10px 0 !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.banner-style {
+    width: 100%;
+}
+
+.detail-doctor-avatar {
+    border-radius: 100%;
+    width: 100%;
+    max-width: 250px;
+}
+
+.doctor-info-box {
+    padding: 20px !important;
+}
+
+.color-gray {
+    color: gray;
+}
+
+.text-justify {
+    text-align: justify !important;
+}
+
+.text-biography {
+    text-align: justify;
+    margin-top: 8px;
+    line-height: 30px;
+}
+
+.form-check .form-check-input {
+    float: none !important;
+    margin-right: auto !important;
+}
+
+.form-check {
+    border: 1px solid lightgrey !important;
+    border-radius: 5px !important;
+    box-shadow: 0 0 10px 0 grey !important;
+    padding: 8px !important;
+    display: inline !important;
+}
+
+.time-ranges-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    align-items: center;
+}
+
+.ml-5 {
+    margin-left: 5px;
+}
+
+.ml-15 {
+    margin-left: 15px;
+}

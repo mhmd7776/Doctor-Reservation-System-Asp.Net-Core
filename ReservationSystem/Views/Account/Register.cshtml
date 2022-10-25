@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ReservationSystem.Domain.ViewModels.RegisterUserViewModel
+
+@{
+    ViewData["Title"] = "ثبت نام";
+}
+
+<div class="col-lg-6 col-md-12 mt-3 mx-auto">
+    <div class="card">
+        <div class="card-body">
+            <form method="post" asp-action="Register" asp-controller="Account">
+                <h4 class="text-center">
+                    <span>ثبت نام</span>
+                    <i class="fa fa-user-plus"></i>
+                </h4>
+                <hr />
+
+                <div class="mb-3 direction-rtl">
+                    <label asp-for="UserName" class="form-label"></label>
+                    <input type="text" class="form-control" asp-for="UserName">
+                    <span class="error-style" asp-validation-for="UserName"></span>
+                </div>
+                
+                <div class="mb-3 direction-rtl">
+                    <label asp-for="FullName" class="form-label"></label>
+                    <input type="text" class="form-control" asp-for="FullName">
+                    <span class="error-style" asp-validation-for="FullName"></span>
+                </div>
+                
+                <div class="mb-3 direction-rtl">
+                    <label asp-for="Password" class="form-label"></label>
+                    <input type="password" class="form-control" asp-for="Password">
+                    <span class="error-style" asp-validation-for="Password"></span>
+                </div>
+                
+                <div class="mb-3 direction-rtl">
+                    <label asp-for="ConfirmPassword" class="form-label"></label>
+                    <input type="password" class="form-control" asp-for="ConfirmPassword">
+                    <span class="error-style" asp-validation-for="ConfirmPassword"></span>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">ثبت نام</button>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,68 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using ReservationSystem.Application.Extensions
+@model ReservationSystem.Domain.ViewModels.FilterDoctorsViewModel
+
+@{
+    ViewData["Title"] = "صفحه اصلی";
+}
+
+<div class="col-12">
+    <img src="/images/defaults/banner.png" class="banner-style" alt="بنر سایت"/>
+</div>
+
+<div class="col-12 table-responsive mt-3 direction-rtl">
+    
+    <div class="d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">
+            <span>لیست دکتران</span>
+        </h4>
+        <form method="get" id="FilterForm" asp-action="Index" asp-controller="Home">
+            <input type="hidden" asp-for="CurrentPage"/>
+            <div class="position-relative">
+                <input type="text" autocomplete="off" class="form-control" asp-for="FullName" placeholder="جستجو بر اساس نام"/>
+                <button class="search-btn" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    <hr/>
+
+    @if (Model.Entities.Any())
+    {
+        <table class="table table-bordered table-hover text-center">
+            <thead class="table-secondary">
+            <tr>
+                <th scope="col">تصویر</th>
+                <th scope="col">نام کامل</th>
+                <th scope="col">تخصص</th>
+                <th scope="col">امکانات</th>
+            </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            @foreach (var doctor in Model.Entities)
+            {
+                <tr class="vertical-align-middle">
+                    <th>
+                        <img src="@doctor.GetDoctorAvatarPath()" class="doctor-avatar" alt="تصویر"/>
+                    </th>
+                    <td>@doctor.User.FullName</td>
+                    <td>@doctor.Specialty</td>
+                    <td>
+                        <a asp-action="DoctorDetail" asp-controller="Home" asp-route-doctorId="@doctor.Id" class="btn btn-primary btn-sm">مشاهده اطلاعات</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+        <partial name="_PaginationPartial" model="@Model.GetPaging()"/>
+    }
+    else
+    {
+        <div class="alert alert-primary text-center" role="alert">
+            هیچ دکتری یافت نشد
+        </div>
+    }
+
+</div>

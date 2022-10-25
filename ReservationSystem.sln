@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservationSystem.Web", "ReservationSystem\ReservationSystem.Web.csproj", "{A2BDFF48-556A-4120-8CA0-FCAB717B65E5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{737BE9C1-2EFF-43DD-9275-3D2BA01D9D20}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{896D64D0-3975-4E6E-B7A0-AA115887EE20}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataLayer", "DataLayer", "{797E2CDD-D8A3-42D9-95CD-C67B2A5AEAED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{0268D8D4-39F4-4C7D-A529-09E6A87A3DF7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IOC", "IOC", "{17FC3B78-020D-45E0-A7A5-96781B3B824C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservationSystem.Application", "ReservationSystem.Application\ReservationSystem.Application.csproj", "{2ED85091-B482-47CF-BBB4-091CFA4ABA42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservationSystem.DataLayer", "ReservationSystem.DataLayer\ReservationSystem.DataLayer.csproj", "{6B9B32E5-9395-4487-89DE-86384011AE97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservationSystem.Domain", "ReservationSystem.Domain\ReservationSystem.Domain.csproj", "{0D29D5C7-75C9-4618-9F14-F5BB9427B924}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservationSystem.IoC", "ReservationSystem.IoC\ReservationSystem.IoC.csproj", "{2D5F920B-BA9E-4B8D-A465-07407F856A44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2BDFF48-556A-4120-8CA0-FCAB717B65E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2BDFF48-556A-4120-8CA0-FCAB717B65E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2BDFF48-556A-4120-8CA0-FCAB717B65E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2BDFF48-556A-4120-8CA0-FCAB717B65E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ED85091-B482-47CF-BBB4-091CFA4ABA42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ED85091-B482-47CF-BBB4-091CFA4ABA42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ED85091-B482-47CF-BBB4-091CFA4ABA42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ED85091-B482-47CF-BBB4-091CFA4ABA42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B9B32E5-9395-4487-89DE-86384011AE97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B9B32E5-9395-4487-89DE-86384011AE97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B9B32E5-9395-4487-89DE-86384011AE97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B9B32E5-9395-4487-89DE-86384011AE97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D29D5C7-75C9-4618-9F14-F5BB9427B924}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D29D5C7-75C9-4618-9F14-F5BB9427B924}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D29D5C7-75C9-4618-9F14-F5BB9427B924}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D29D5C7-75C9-4618-9F14-F5BB9427B924}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D5F920B-BA9E-4B8D-A465-07407F856A44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D5F920B-BA9E-4B8D-A465-07407F856A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D5F920B-BA9E-4B8D-A465-07407F856A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D5F920B-BA9E-4B8D-A465-07407F856A44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A2BDFF48-556A-4120-8CA0-FCAB717B65E5} = {737BE9C1-2EFF-43DD-9275-3D2BA01D9D20}
+		{2ED85091-B482-47CF-BBB4-091CFA4ABA42} = {0268D8D4-39F4-4C7D-A529-09E6A87A3DF7}
+		{6B9B32E5-9395-4487-89DE-86384011AE97} = {797E2CDD-D8A3-42D9-95CD-C67B2A5AEAED}
+		{0D29D5C7-75C9-4618-9F14-F5BB9427B924} = {896D64D0-3975-4E6E-B7A0-AA115887EE20}
+		{2D5F920B-BA9E-4B8D-A465-07407F856A44} = {17FC3B78-020D-45E0-A7A5-96781B3B824C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {12AF23EB-B4AC-40A4-B78E-A39F5745AE87}
+	EndGlobalSection
+EndGlobal
